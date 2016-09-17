@@ -9,14 +9,13 @@ def index(request):
     return render(request, 'index.html')
 
 
-def model(request):
+def model(request,model_id):
     cnx = mysql.connector.connect(user='root', password='root',
                               host='127.0.0.1',
                               database='fintech')
     cursor = cnx.cursor(dictionary=True)
-    model_id = request.GET.get('id', '1')
-    query = "SELECT * FROM fintech.model_stocks WHERE model_id=%s"
-    cursor.execute(query, model)
+    query = "SELECT * FROM model_stocks WHERE model_id = %s" 
+    cursor.execute(query, (model_id,))
     stock_list =[]
     for stock in cursor:
         stock_list.append(stock)

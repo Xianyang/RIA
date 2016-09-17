@@ -18,7 +18,7 @@ from django.contrib import admin
 from . import views
 urlpatterns = [
     url(r'^$', views.index),
-    url(r'^model$', views.model),
+    url(r'^model/(\d+)$', views.model),
     url(r'^api/', include('api.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^get_strategy_list/', include('get_strategy_list.urls')),
