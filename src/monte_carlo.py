@@ -19,7 +19,7 @@ def monte_carlo(ages, capital, annual_return, annual_risk, saving, withdraw, inf
             new_capital = one_year_movement(new_capital, annual_return, annual_risk, withdraw, inflation)
 
         results.append(new_capital)
-        print new_capital
+        #print new_capital
 
     return results
 
