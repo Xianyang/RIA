@@ -62,7 +62,7 @@ $(function() {
         $.ajax({
            type: "POST",
            url: "/save_user_profile/",
-           data: $("#idForm").serialize(), // serializes the form's elements.
+           data: $("#user_profile_form").serialize(), // serializes the form's elements.
            success: function(data)
            {
                console.log(data)
