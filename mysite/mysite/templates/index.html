@@ -97,16 +97,16 @@
                       </div> -->
 
             <h2 class="sub-header col-xs-12" id="model_code">User Profile</h2>
-            <form>
+            <form action="{% url 'mysite:save_user_profile'%}" method="post" id="user_profile_form">
                 <div class="text-left form-group col-xs-10">
                     <label>Current Age</label>
-                    <select class=“form-control” style="margin-right: 60px;" id="user_age_select">
+                    <select class=“form-control” style="margin-right: 60px;" id="user_age_select" name="user_age">
                     </select>
                     <label>Retire Age</label>
-                    <select class=“form-control” style="margin-right: 60px;" id="retire_age_select">
+                    <select class=“form-control” style="margin-right: 60px;" id="retire_age_select" name="retire_age">
                     </select>
                     <label>Risk Preference</label>
-                    <select class=“form-control”>
+                    <select class=“form-control” name="risk_preference">
                         <option>High</option>
                         <option>Above Average</option>
                         <option>Average</option>
@@ -116,11 +116,11 @@
                 </div>
                 <div class="text-left form-group col-xs-4">
                     <label for="usr">Annual Saving</label>
-                    <input type="text" class="form-control" id="user_annual_saving">
+                    <input type="text" class="form-control" id="user_annual_saving" name="user_annual_saving">
                 </div>
                 <div class="text-left form-group col-xs-4">
                     <label for="usr">Annual Withdraw</label>
-                    <input type="text" class="form-control" id="user_annual_withdraw">
+                    <input type="text" class="form-control" id="user_annual_withdraw" name="user_annual_withdraw">
                 </div>
             </form>
             <h2 class="sub-header col-xs-12">Model List</h2>

@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.http import JsonResponse
 import mysql.connector
+from .forms import NameForm
 
 def index(request):
     return render(request, 'index.html')
@@ -44,4 +45,14 @@ def model(request,model_id):
     cnx.close()
     context = {'stock_list': stock_list,"model":model}
     return render(request, 'ModelDetail.html',context)
+
+def save_user_profile(request):
+    request.seesion["user_age"] = request.POST['user_age']
+    request.seesion["retire_age"] = request.POST["retire_age"]
+    request.seesion["risk_preference"] = request.POST["risk_preference"]
+    request.seesion["user_annual_saving"] = request.POST["user_annual_saving"]
+    request.seesion["user_annual_withdraw"] = request.POST["user_annual_withdraw"]
+    print(request.POST["user_annual_withdraw"])
+    return HttpResponse("save user profile success")
+
 

@@ -19,6 +19,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^model/(\d+)$', views.model),
+    url(r'^save_user_profile/$', views.save_user_profile,name='save_user_profile'),
     url(r'^api/', include('api.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^get_strategy_list/', include('get_strategy_list.urls')),
