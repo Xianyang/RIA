@@ -84,7 +84,9 @@
                   </div>
                   <div class="form-group text-left col-xs-8">
                       <label for="comment">Description:</label>
-                      <textarea class="form-control " rows="5" id="comment" disabled value="{{ model.description }}"></textarea>
+                      <textarea class="form-control " rows="5" id="comment" disabled>
+                          {{ model.description }}
+                      </textarea>
                   </div>
                   <div class="form-group text-left col-xs-8">
                       <button type="button" class="btn btn-primary">Monte Carlo Estimate</button>
@@ -106,10 +108,10 @@
               <tbody>
                 {% for stock in stock_list %}
                     <tr>
-                        <td>{{stock.stock}}</td>
-                        <td>{{stock.return}}</td>
-                        <td>{{stock.risk}}</td>
-                        <td>{{stock.weight}}</td>
+                        <td>{{ stock.stock }}</td>
+                        <td>{{ stock.return }}</td>
+                        <td>{{ stock.risk }}</td>
+                        <td>{{ stock.weight }}</td>
                     </tr>
                 {% endfor %}
 {#                <tr>#}
