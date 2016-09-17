@@ -19,7 +19,7 @@ def model(request,model_id):
     model_stock_list =[]
     for model_stock in cursor:
         model_stock_list.append(model_stock)
-    id_str = "("+",".join("'"+[str(model_stock["stock_id"])+"'" for model_stock in model_stock_list]) +")"
+    id_str = "("+",".join(["'"+str(model_stock["stock_id"])+"'" for model_stock in model_stock_list]) +")"
 
 
     query = "SELECT * FROM fintech.stocks WHERE id IN %s"
