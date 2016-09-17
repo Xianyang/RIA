@@ -25,7 +25,7 @@ def model(request,model_id):
     query = "SELECT * FROM fintech.stocks WHERE id IN (%s)"
     query = query % id_str_param
 
-    cursor.execute(query, (id_str,))
+    cursor.execute(query, id_str)
 
     stock_list =[]
     for stock in cursor:
