@@ -17,7 +17,7 @@ $(function() {
                 $("#strategy_list_info").append(htmlStr)
             }
             $("#strategy_list_info tr").on('click', function() {
-                window.location = "/strategy_list/" + $(this).attr("stock_id");
+                window.location = "/model/" + $(this).attr("stock_id");
             });
         }
     });
