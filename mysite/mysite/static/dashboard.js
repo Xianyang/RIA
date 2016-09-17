@@ -1,10 +1,10 @@
 $(function() {
     $.ajax({
         type: 'GET',
-        url: '/api/get_strategy_list',
+        url: '/api/model_list',
         dataType: 'json',
         success: function(data) {
-            var strategy_list = data["strategy_list"];
+            var strategy_list = data["model_list"];
             $("#strategy_list_info").html("");
             for (var i = 0; i < strategy_list.length; i++) {
                 var htmlStr = "<tr stock_id='" + strategy_list[i].id + "'>";
