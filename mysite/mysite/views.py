@@ -48,11 +48,11 @@ def model(request,model_id):
 
 @csrf_exempt
 def save_user_profile(request):
-    request.seesion["user_age"] = request.POST['user_age']
-    request.seesion["retire_age"] = request.POST["retire_age"]
-    request.seesion["risk_preference"] = request.POST["risk_preference"]
-    request.seesion["user_annual_saving"] = request.POST["user_annual_saving"]
-    request.seesion["user_annual_withdraw"] = request.POST["user_annual_withdraw"]
+    request.session["user_age"] = request.POST['user_age']
+    request.session["retire_age"] = request.POST["retire_age"]
+    request.session["risk_preference"] = request.POST["risk_preference"]
+    request.session["user_annual_saving"] = request.POST["user_annual_saving"]
+    request.session["user_annual_withdraw"] = request.POST["user_annual_withdraw"]
     print(request.POST["user_annual_withdraw"])
     return HttpResponse("save user profile success")
 
