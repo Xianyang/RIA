@@ -37,7 +37,7 @@ def monte_carlo(annual_return, annual_risk, capital, inflation, ages, annual_sav
 
         annual_capital_list.append(annual_capital)
         capital_list.append(new_capital)
-        print new_capital
+        # print new_capital
 
     return capital_list, annual_capital_list
 

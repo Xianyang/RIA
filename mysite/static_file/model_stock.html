@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -13,17 +12,17 @@
     <title>Dashboard Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static "node_modules/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{% static "node_modules/bootstrap/assets/css/ie10-viewport-bug-workaround.css" %}" rel="stylesheet">
+    <link href="node_modules/bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static "dashboard.css" %}"  rel="stylesheet">
+    <link href="dashboard.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="{% static "node_modules/bootstrap/assets/js/ie-emulation-modes-warning.js" %}"></script>
+    <script src="node_modules/bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -70,23 +69,21 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header" id="model_code">{{ model.code }}</h2>
+          <h2 class="sub-header" id="model_code">CHNGRW</h2>
 
 <div class="row placeholders">
               <div class="container">
                   <div class="text-left form-group col-xs-4">
                       <label for="usr" >Risk Rate:</label>
-                      <input type="text" class="form-control" id="total_risk" disabled value="{{ model.risk }}">
+                      <input type="text" class="form-control" id="total_risk" disabled>
                   </div>
                   <div class="form-group text-left col-xs-4">
                       <label for="pwd">Total Return:</label>
-                      <input type="text" class="form-control" id="total_return" disabled value="{{ model.return }}">
+                      <input type="text" class="form-control" id="total_return" disabled>
                   </div>
                   <div class="form-group text-left col-xs-8">
                       <label for="comment">Description:</label>
-                      <textarea class="form-control " rows="5" id="comment" disabled>
-                          {{ model.description }}
-                      </textarea>
+                      <textarea class="form-control " rows="5" id="comment" disabled></textarea>
                   </div>
                   <div class="form-group text-left col-xs-8">
                       <button type="button" class="btn btn-primary">Monte Carlo Estimate</button>
@@ -106,20 +103,12 @@
                 </tr>
               </thead>
               <tbody>
-                {% for stock in stock_list %}
-                    <tr>
-                        <td>{{ stock.code }}</td>
-                        <td>{{ stock.return }}</td>
-                        <td>{{ stock.risk }}</td>
-                        <td>{{ stock.weight }}</td>
-                    </tr>
-                {% endfor %}
-{#                <tr>#}
-{#                  <td>1,001</td>#}
-{#                  <td>Lorem</td>#}
-{#                  <td>1,001</td>#}
-{#                  <td>Lorem</td>#}
-{#                </tr>#}
+                <tr>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                  <td>1,001</td>
+                  <td>Lorem</td>
+                </tr>
             </tbody>
             </table>
           </div>
@@ -132,10 +121,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="node_modules/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="{% static  "node_modules/bootstrap/dist/js/bootstrap.min.js" %}"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="{% static "node_modules/bootstrap/assets/js/vendor/holder.min.js" %}"></script>
+    <script src="node_modules/bootstrap/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{% static "node_modules/bootstrap/assets/js/ie10-viewport-bug-workaround.js" %}"></script>
+    <script src="node_modules/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
