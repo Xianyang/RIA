@@ -23,8 +23,8 @@ def monte_carlo(ages, capital, annual_return, annual_risk, saving, withdraw, inf
 
     return results
 
-results = monte_carlo((40, 60, 80), 0, 0.07, 0.15, 100000, -90000, 0.02, 3000)
+result = monte_carlo((40, 60, 80), 0, 0.07, 0.15, 100000, -90000, 0.02, 3000)
 
-print 'average is %f' % np.mean(results)
-print 'std is %f' % np.std(results)
+print 'average is %f' % np.mean(result)
+print 'std is %f' % np.std(result)
 
