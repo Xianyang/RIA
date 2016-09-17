@@ -20,7 +20,12 @@ def model(request,model_id):
     for stock in cursor:
         stock_list.append(stock)
     cursor.close()
+    query = "SELECT * FROM fintech.models WHERE id=%s"
+    cursor.execute(query, (model_id,))
+    model = {}
+    for m in cursor:
+        model = m
     cnx.close()
-    context = {'stock_list': stock_list}
+    context = {'stock_list': stock_list,"model":model}
     return render(request, 'ModelDetail.html',context)
 
