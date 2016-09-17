@@ -32,7 +32,7 @@ def model(request,model_id):
         for model_stock in model_stock_list:
             if stock["id"] == model_stock["stock_id"]:
                 stock["weight"] = model_stock["weighting"]
-            stock_list.append(stock)
+        stock_list.append(stock)
     query = "SELECT * FROM fintech.models WHERE id=%s"
 
     cursor.execute(query, (model_id,))
