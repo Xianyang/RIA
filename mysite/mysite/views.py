@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.http import JsonResponse
 import mysql.connector
+from django.views.decorators.csrf import csrf_exempt
 
 def index(request):
     return render(request, 'index.html')
@@ -45,6 +46,7 @@ def model(request,model_id):
     context = {'stock_list': stock_list,"model":model}
     return render(request, 'ModelDetail.html',context)
 
+@csrf_exempt
 def save_user_profile(request):
     request.seesion["user_age"] = request.POST['user_age']
     request.seesion["retire_age"] = request.POST["retire_age"]
