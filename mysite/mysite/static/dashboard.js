@@ -61,7 +61,7 @@ $(function() {
     $("#user_profile_form select,#user_profile_form input").change(function(){
         $.ajax({
            type: "POST",
-           url: "save_user_profile",
+           url: "/save_user_profile/",
            data: $("#idForm").serialize(), // serializes the form's elements.
            success: function(data)
            {
