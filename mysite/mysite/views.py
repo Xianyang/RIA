@@ -19,9 +19,12 @@ def model(request,model_id):
     model_stock_list =[]
     for model_stock in cursor:
         model_stock_list.append(model_stock)
-    id_str = "("+",".join([str(model_stock["stock_id"]) for model_stock in model_stock_list]) +")"
+    id_str = "("+",".join("'"+[str(model_stock["stock_id"])+"'" for model_stock in model_stock_list]) +")"
+
+
     query = "SELECT * FROM fintech.stocks WHERE id IN %s"
-    cursor.execute(query, (model_id,))
+    cursor.execute(query, (id_str,))
+
     stock_list =[]
     for stock in cursor:
         for model_stock in model_stock_list:
@@ -29,6 +32,7 @@ def model(request,model_id):
                 stock["weight"] = model_stock["weighting"]
             stock_list.append(stock)
     query = "SELECT * FROM fintech.models WHERE id=%s"
+
     cursor.execute(query, (model_id,))
     model = {}
     for m in cursor:
