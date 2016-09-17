@@ -51,4 +51,11 @@ $(function() {
     $("#strategy_list_info tr").on('click', function() {
         window.location = "/model?id=" + $(this).attr("stock_id");
     });
+
+    for (var i = 20; i <= 85; i++) {
+        $("#user_age_select").append("<option value='" + i + "'>" + i + "</option>")
+    }
+    for (var i = 20; i <= 85; i++) {
+        $("#retire_age_select").append("<option value='" + i + "'>" + i + "</option>")
+    }
 })
