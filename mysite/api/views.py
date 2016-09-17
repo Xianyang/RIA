@@ -16,5 +16,7 @@ def model_list(request):
     cursor.close()
     cnx.close()
     return JsonResponse({'model_list':model_list})
+
+
 def index(request):
     return HttpResponse("")
