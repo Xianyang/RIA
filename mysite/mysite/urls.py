@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^api/', include('api.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^get_strategy_list/', include('get_strategy_list.urls')),
+    url(r'^monte/, views.show_monte_carlo_result),
     url(r'^admin/', admin.site.urls),
     url(r'^create_portfolio/$',views.create_portfolio,name="create_portfolio")
 ]

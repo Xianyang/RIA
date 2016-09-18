@@ -56,6 +56,7 @@ def save_user_profile(request):
     print(request.POST["user_annual_withdraw"])
     return HttpResponse("save user profile success")
 
+<<<<<<< HEAD
 def create_portfolio(request):
     model_id = "1"
     cnx = mysql.connector.connect(user='root', password='root',
@@ -92,5 +93,9 @@ def create_portfolio(request):
     context = {'stock_list': stock_list,"model":model}
 
     return render(request, 'user_portfolio.html',context)
+
+def show_monte_carlo_result(request):
+    return render(request, 'monte_carlo.html')
+
 
 
