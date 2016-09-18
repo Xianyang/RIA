@@ -56,4 +56,7 @@ def save_user_profile(request):
     print(request.POST["user_annual_withdraw"])
     return HttpResponse("save user profile success")
 
+def show_monte_carlo_result(request):
+    return render(request, 'monte_carlo.html')
+
 
