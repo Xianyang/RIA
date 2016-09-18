@@ -39,6 +39,9 @@ $(function() {
         "value_at_risk": "sit"
     }];
     for (var i = 0; i < strategy_list.length; i++) {
+        strategy_list[i].return =  (parseFloat(strategy_list[i].return) * 100).toFixed(1) + '%';
+        strategy_list[i].risk =  (parseFloat(strategy_list[i].risk) * 100).toFixed(1) + '%'
+        strategy_list[i].value_at_risk =  (parseFloat(strategy_list[i].value_at_risk) * 100).toFixed(1) + '%'
         var htmlStr = "<tr stock_id='" + strategy_list[i].id + "'>";
         htmlStr += "<td>" + strategy_list[i].code + "</td>"
         htmlStr += "<td>" + strategy_list[i].objective + "</td>"
