@@ -56,7 +56,6 @@ def save_user_profile(request):
     print(request.POST["user_annual_withdraw"])
     return HttpResponse("save user profile success")
 
-<<<<<<< HEAD
 def create_portfolio(request):
     model_id = "1"
     cnx = mysql.connector.connect(user='root', password='root',
