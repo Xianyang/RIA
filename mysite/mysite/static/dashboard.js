@@ -7,7 +7,7 @@ $(function () {
             strategy_list = data["model_list"];
             $("#strategy_list_info").html("");
             for (var i = 0; i < strategy_list.length; i++) {
-                strategy_list[i].risk_value = parseFloat(strategy_list[i].strategy_list[i].risk);
+                strategy_list[i].risk_value = parseFloat(strategy_list[i].risk);
                 strategy_list[i].return = (parseFloat(strategy_list[i].return) * 100).toFixed(1) + '%';
                 strategy_list[i].risk = (parseFloat(strategy_list[i].risk_value) * 100).toFixed(1) + '%'
                 strategy_list[i].value_at_risk = (parseFloat(strategy_list[i].value_at_risk) * 100).toFixed(1) + '%'
