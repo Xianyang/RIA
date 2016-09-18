@@ -4,7 +4,7 @@ import plotly.graph_objs as go
 
 _annual_return = 0.07
 _annual_risk = 0.15
-_capital = 0
+_capital = 600000
 _inflation = 0.03
 _ages = [40, 60]
 _annual_saving = 12000
