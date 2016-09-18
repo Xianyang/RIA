@@ -56,4 +56,41 @@ def save_user_profile(request):
     print(request.POST["user_annual_withdraw"])
     return HttpResponse("save user profile success")
 
+def create_portfolio(request):
+    model_id = "1"
+    cnx = mysql.connector.connect(user='root', password='root',
+                              host='127.0.0.1',
+                              database='fintech')
+    cursor = cnx.cursor(dictionary=True)
+    query = "SELECT * FROM model_stocks WHERE model_id = %s"
+    cursor.execute(query, (model_id,))
+    model_stock_list =[]
+    for model_stock in cursor:
+        model_stock_list.append(model_stock)
+
+    id_str = [str(model_stock["stock_id"]) for model_stock in model_stock_list]
+    id_str_param=', '.join(map(lambda x: '%s', id_str))
+    query = "SELECT * FROM fintech.stocks WHERE id IN (%s)"
+    query = query % id_str_param
+    cursor.execute(query, id_str)
+
+    stock_list =[]
+    for stock in cursor:
+        for model_stock in model_stock_list:
+            if stock["id"] == model_stock["stock_id"]:
+                stock["weight"] = model_stock["weighting"]
+        stock_list.append(stock)
+    query = "SELECT * FROM fintech.models WHERE id=%s"
+
+    cursor.execute(query, (model_id,))
+    model = {}
+    for m in cursor:
+        model = m
+
+    cursor.close()
+    cnx.close()
+    context = {'stock_list': stock_list,"model":model}
+
+    return render(request, 'user_portfolio.html',context)
+
 
