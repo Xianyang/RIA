@@ -89,7 +89,7 @@
                       </textarea>
                   </div>
                   <div class="form-group text-left col-xs-8">
-                      <button type="button" class="btn btn-primary">Monte Carlo Estimate</button>
+                      <button type="button" class="btn btn-primary" id="monte_estimate">Monte Carlo Estimate</button>
                   </div>
               </div>
         </div>
@@ -137,5 +137,10 @@
     <script src="{% static "node_modules/bootstrap/assets/js/vendor/holder.min.js" %}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static "node_modules/bootstrap/assets/js/ie10-viewport-bug-workaround.js" %}"></script>
+    <script>
+        $("#monte_estimate").on("click",function(){
+           window.location = "/monte/";
+        });
+    </script>
   </body>
 </html>
