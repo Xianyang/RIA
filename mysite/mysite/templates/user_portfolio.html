@@ -76,7 +76,8 @@
               <div class="container">
                   <div class="text-left form-group col-xs-4">
                       <label for="usr" >Original Capital:</label>
-                      <input type="text" class="form-control" id="my_capital" value="{% request.session.get('original_capital', '100000')" %}>
+                      <input type="text" class="form-control" id="my_capital" value="{% if 'original_capital' in request.session %}{{ request.session.get('original_capital') }}{% else %} 100000git status
+                      {% endif %}">
                   </div>
               </div>
         </div>
