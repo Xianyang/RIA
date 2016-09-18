@@ -93,6 +93,21 @@ if __name__ == '__main__':
 
         data_to_figure.append(trace)
 
+    # get median number
+    sorted_capital_list = sorted(capital_list)
+    median = sorted_capital_list[_loop_count / 2]
+    median_index = capital_list.index(median)
+    trace = go.Scatter(
+        x=age_list,
+        y=annual_capital_list[median_index],
+        mode='lines',
+        line=dict(
+            color='yellow',
+            width=5
+        )
+    )
+    data_to_figure.append(trace)
+
     # add retirement age
     trace = go.Scatter(
         x=[_ages[1], _ages[1]],
@@ -115,7 +130,8 @@ if __name__ == '__main__':
 
     data_to_figure.append(trace)
 
-    layout = dict(title='Monte Carlo Result',
+    titie = 'Monte Carlo Result - depletion rate %.3f' % (depletion_rate * 100) + '%'
+    layout = dict(title=titie,
                   xaxis=dict(title='Age'),
                   yaxis=dict(title='Capital'),
                   )
