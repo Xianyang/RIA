@@ -8,7 +8,7 @@ _capital = 0
 _inflation = 0.02
 _ages = [40, 60]
 _annual_saving = 100000
-_annual_withdraw = -90000
+_annual_withdraw = -0000
 _expect_age = 85
 
 _loop_count = 1000
@@ -83,10 +83,32 @@ if __name__ == '__main__':
             x=age_list,
             y=annual_capital,
             mode='lines',
-            name='lines'
+            name=''
         )
 
         data_to_figure.append(trace)
+
+    # add retirement age
+    trace = go.Scatter(
+        x=[_ages[1], _ages[1]],
+        y=[0, 80000000],
+        mode='line',
+        name=''
+    )
+    data_to_figure.append(trace)
+
+    # add 0 line
+    trace = go.Scatter(
+        x=[_ages[1], _expect_age],
+        y=[0, 0],
+        mode='line',
+        line=dict(
+            color='white',
+            width=1
+        )
+    )
+
+    data_to_figure.append(trace)
 
     layout = dict(title='Capital',
                   xaxis=dict(title='Age'),
