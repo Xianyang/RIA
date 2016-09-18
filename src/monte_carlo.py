@@ -5,10 +5,10 @@ import plotly.graph_objs as go
 _annual_return = 0.07
 _annual_risk = 0.15
 _capital = 0
-_inflation = 0.02
+_inflation = 0.03
 _ages = [40, 60]
-_annual_saving = 100000
-_annual_withdraw = -0000
+_annual_saving = 12000
+_annual_withdraw = -60000
 _expect_age = 85
 
 _loop_count = 1000
@@ -24,6 +24,7 @@ def one_year_movement(capital, annual_return, annual_risk, saving, inflation):
 def monte_carlo(annual_return, annual_risk, capital, inflation, ages, annual_saving, annual_withdraw, expect_age, loop_count):
     capital_list = []
     annual_capital_list = []
+    fail_count = 0.0
     for i in xrange(0, loop_count):
         new_capital = capital
         annual_capital = []
@@ -35,11 +36,14 @@ def monte_carlo(annual_return, annual_risk, capital, inflation, ages, annual_sav
             new_capital = one_year_movement(new_capital, annual_return, annual_risk, annual_withdraw, inflation)
             annual_capital.append(new_capital)
 
+        if new_capital < 0:
+            fail_count += 1
+
         annual_capital_list.append(annual_capital)
         capital_list.append(new_capital)
         # print new_capital
 
-    return capital_list, annual_capital_list
+    return capital_list, annual_capital_list, fail_count / loop_count
 
 
 def add_line_extension(figure, xData, yData, name, dashStyle, color):
@@ -65,10 +69,11 @@ if __name__ == '__main__':
     # annual_return, annual_risk, capital, inflation, ages, annual_saving, retire_age, annual_withdraw, expect_age
 
     # step 1: run the monte carlo algorithm
-    capital_list, annual_capital_list = monte_carlo(_annual_return, _annual_risk, _capital, _inflation,
+    capital_list, annual_capital_list, depletion_rate = monte_carlo(_annual_return, _annual_risk, _capital, _inflation,
                                                     _ages, _annual_saving, _annual_withdraw, _expect_age, _loop_count)
     print 'average is %f' % np.mean(capital_list)
     print 'std is %f' % np.std(capital_list)
+    print 'depletion rate is %f' % depletion_rate
 
     # step 2: draw the chart
     age_list = []
@@ -91,7 +96,7 @@ if __name__ == '__main__':
     # add retirement age
     trace = go.Scatter(
         x=[_ages[1], _ages[1]],
-        y=[0, 80000000],
+        y=[-3000000, 3000000],
         mode='line',
         name=''
     )
@@ -99,25 +104,25 @@ if __name__ == '__main__':
 
     # add 0 line
     trace = go.Scatter(
-        x=[_ages[1], _expect_age],
+        x=[_ages[1], _expect_age - 2],
         y=[0, 0],
         mode='line',
         line=dict(
             color='white',
-            width=1
+            width=3
         )
     )
 
     data_to_figure.append(trace)
 
-    layout = dict(title='Capital',
+    layout = dict(title='Monte Carlo Result',
                   xaxis=dict(title='Age'),
                   yaxis=dict(title='Capital'),
                   )
 
     fig = dict(data=data_to_figure, layout=layout)
 
-    plotly.offline.plot(fig, filename='file.html')
+    plotly.offline.plot(fig, filename='monte_carlo.html')
 
     # plotly.plotly.image.save_as(fig, 'data.png')
 
