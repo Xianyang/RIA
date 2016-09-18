@@ -102,121 +102,114 @@
                                 </tr>
                             </thead>
                             <tbody id="strategy_list_info">
-                                <!--                <tr target_link='http://www.baidu.com'>
-                                 <td>1,001</td>
+                                <tr>
+                                 <td>stock01</td>
                                  <td>Lorem</td>
-                                 <td>ipsum</td>
-                                 <td>dolor</td>
+                                 <td>0.15600000</td>
+                                 <td>0.27200</td>
                                  <td>sit</td>
                                  </tr>
                                  <tr>
-                                 <td>1,002</td>
+                                 <td>stock02</td>
                                  <td>amet</td>
-                                 <td>consectetur</td>
-                                 <td>adipiscing</td>
+                                 <td>0.14100000</td>
+                                 <td>0.35300</td>
                                  <td>elit</td>
                                  </tr>
                                  <tr>
-                                 <td>1,003</td>
+                                 <td>stock03</td>
                                  <td>Integer</td>
-                                 <td>nec</td>
-                                 <td>odio</td>
+                                 <td>0.07100000</td>
+                                 <td>0.12100</td>
                                  <td>Praesent</td>
                                  </tr>
-                                 <tr>
-                                 <td>1,003</td>
-                                 <td>libero</td>
-                                 <td>Sed</td>
-                                 <td>cursus</td>
-                                 <td>ante</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,004</td>
-                                 <td>dapibus</td>
-                                 <td>diam</td>
-                                 <td>Sed</td>
-                                 <td>nisi</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,005</td>
-                                 <td>Nulla</td>
-                                 <td>quis</td>
-                                 <td>sem</td>
-                                 <td>at</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,006</td>
-                                 <td>nibh</td>
-                                 <td>elementum</td>
-                                 <td>imperdiet</td>
-                                 <td>Duis</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,007</td>
-                                 <td>sagittis</td>
-                                 <td>ipsum</td>
-                                 <td>Praesent</td>
-                                 <td>mauris</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,008</td>
-                                 <td>Fusce</td>
-                                 <td>nec</td>
-                                 <td>tellus</td>
-                                 <td>sed</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,009</td>
-                                 <td>augue</td>
-                                 <td>semper</td>
-                                 <td>porta</td>
-                                 <td>Mauris</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,010</td>
-                                 <td>massa</td>
-                                 <td>Vestibulum</td>
-                                 <td>lacinia</td>
-                                 <td>arcu</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,011</td>
-                                 <td>eget</td>
-                                 <td>nulla</td>
-                                 <td>Class</td>
-                                 <td>aptent</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,012</td>
-                                 <td>taciti</td>
-                                 <td>sociosqu</td>
-                                 <td>ad</td>
-                                 <td>litora</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,013</td>
-                                 <td>torquent</td>
-                                 <td>per</td>
-                                 <td>conubia</td>
-                                 <td>nostra</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,014</td>
-                                 <td>per</td>
-                                 <td>inceptos</td>
-                                 <td>himenaeos</td>
-                                 <td>Curabitur</td>
-                                 </tr>
-                                 <tr>
-                                 <td>1,015</td>
-                                 <td>sodales</td>
-                                 <td>ligula</td>
-                                 <td>in</td>
-                                 <td>libero</td>
-                                 </tr> -->
                             </tbody>
                         </table>
                     </div>
+                    
+                    <h2 class="sub-header col-xs-12"> </h2>
+                    <!-- Prepare a Dom with size (width and height) for ECharts -->
+                    <div id="main" style="height:400px"></div>
+                    <!-- ECharts import -->
+                    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+                    <script type="text/javascript">
+                        // configure for module loader
+                        require.config({
+                                       paths: {
+                                       echarts: 'http://echarts.baidu.com/build/dist'
+                                       }
+                                       });
+                                       
+                                       // use
+                                       require(
+                                               [
+                                                'echarts',
+                                                'echarts/chart/line' // require the specific chart type
+                                                ],
+                                               function (ec) {
+                                               // Initialize after dom ready
+                                               var myChart = ec.init(document.getElementById('main'));
+                                               
+                                               var option = {
+                                               legend: {
+                                               data:['The relationships between return and risk of models']
+                                               },
+                                               toolbox: {
+                                               show : true,
+                                               feature : {
+                                               mark : {show: true},
+                                               dataView : {show: true, readOnly: false},
+                                               magicType : {show: true, type: ['line', 'bar']},
+                                               restore : {show: true},
+                                               saveAsImage : {show: true}
+                                               }
+                                               },
+                                               calculable : true,
+                                               tooltip : {
+                                               trigger: 'axis',
+                                               formatter: "Return : Risk <br/>{b} : {c}"
+                                               },
+                                               xAxis : [
+                                                        {
+                                                        type : 'value',
+                                                        axisLabel : {
+                                                        formatter: '{value}'
+                                                        }
+                                                        }
+                                                        ],
+                                               yAxis : [
+                                                        {
+                                                        type : 'category',
+                                                        axisLine : {onZero: false},
+                                                        axisLabel : {
+                                                        formatter: '{value}'
+                                                        },
+                                                        boundaryGap : false,
+                                                        data : ['0', '10', '20', '30', '40', '50', '60', '70', '80']
+                                                        }
+                                                        ],
+                                               series : [
+                                                         {
+                                                         name:'The relationships between return and risk of models',
+                                                         type:'line',
+                                                         smooth:true,
+                                                         itemStyle: {
+                                                         normal: {
+                                                         lineStyle: {
+                                                         shadowColor : 'rgba(0,0,0,0.4)'
+                                                         }
+                                                         }
+                                                         },
+                                                         data:[15, -50, -56.5, -46.5, -22.1, -2.5, -27.7, -55.7, -76.5]
+                                                         }
+                                                         ]
+                                               };
+                                               // Load data into the ECharts instance
+                                               myChart.setOption(option);
+                                               }
+                                               );
+                        </script>
+                    
                 </div>
             </div>
         </div>
