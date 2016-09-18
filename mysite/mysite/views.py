@@ -79,6 +79,8 @@ def create_portfolio(request):
         for model_stock in model_stock_list:
             if stock["id"] == model_stock["stock_id"]:
                 stock["weight"] = model_stock["weighting"]
+                stock["unit"] = 100000 * stock["weight"] / stock["price"]
+                stock["cost"] = 100000 * stock["weight"]
         stock_list.append(stock)
     query = "SELECT * FROM fintech.models WHERE id=%s"
 
